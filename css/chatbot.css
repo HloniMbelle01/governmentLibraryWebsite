@@ -1,0 +1,190 @@
+
+    /* Chatbot Widget Styles */
+    .chatbot-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 350px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        z-index: 1000;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .chatbot-header {
+        background: linear-gradient(135deg, var(--green-700), var(--green-900));
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .chatbot-header h4 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .chatbot-toggle {
+        background: var(--yellow);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        color: var(--green-900);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
+    .chatbot-toggle:hover {
+        transform: scale(1.1);
+    }
+
+    .chatbot-body {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+
+    .chatbot-body.hidden {
+        display: none;
+    }
+
+    .chatbot-body:not(.hidden) {
+        display: flex;
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-height: 320px;
+    }
+
+    .message {
+        display: flex;
+        max-width: 80%;
+    }
+
+    .user-message {
+        align-self: flex-end;
+    }
+
+    .bot-message {
+        align-self: flex-start;
+    }
+
+    .message-content {
+        padding: 0.8rem 1rem;
+        border-radius: 18px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .user-message .message-content {
+        background: var(--green-700);
+        color: white;
+        border-bottom-right-radius: 4px;
+    }
+
+    .bot-message .message-content {
+        background: var(--bg);
+        color: #333;
+        border: 1px solid #e0e0e0;
+        border-bottom-left-radius: 4px;
+    }
+
+    .chat-input-container {
+        display: flex;
+        padding: 1rem;
+        border-top: 1px solid #e0e0e0;
+        gap: 0.5rem;
+    }
+
+    .chat-input {
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 0.8rem 1rem;
+        outline: none;
+        font-size: 0.9rem;
+    }
+
+    .chat-input:focus {
+        border-color: var(--green-600);
+    }
+
+    .send-button {
+        background: var(--green-700);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
+    .send-button:hover {
+        background: var(--green-800);
+        transform: scale(1.05);
+    }
+
+    .typing-indicator {
+        display: flex;
+        gap: 4px;
+        padding: 0.8rem 1rem;
+    }
+
+    .typing-dot {
+        width: 8px;
+        height: 8px;
+        background: #999;
+        border-radius: 50%;
+        animation: typing 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typing {
+        0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+    }
+
+    .quick-replies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .quick-reply {
+        background: var(--light-yellow);
+        border: 1px solid var(--yellow);
+        border-radius: 15px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        outline: none;
+    }
+
+    .quick-reply:hover {
+        background: var(--yellow);
+    }

@@ -1,0 +1,148 @@
+/* ===============================
+   SERVICES STYLING & HOVER EFFECT
+   =============================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* SERVICE CARD BASE */
+.service {
+  position: relative;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🔹 Static top gradient border (always visible) */
+.service::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--green-700), var(--yellow));
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  z-index: 2;
+}
+
+/* 🔹 Overlay layer (green tint) — appears on hover */
+.service::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 128, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.service:hover::after {
+  opacity: 1;
+}
+
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 128, 0, 0.35);
+}
+
+/* 🔹 Shiny glowing border animation (on hover only) */
+.service::marker,
+.service .shine-border {
+  display: none;
+}
+
+.service:hover .shine-border {
+  display: block;
+}
+
+/* 🔹 Create the shiny border effect */
+.service::before,
+.service::after,
+.service::after {
+  pointer-events: none;
+}
+
+.service:hover .shine {
+  opacity: 1;
+}
+
+/* === Animated border === */
+.service::after,
+.service::before {
+  pointer-events: none;
+}
+
+/* 🔹 Shiny line moving around the border */
+.service:hover::before {
+  background: linear-gradient(90deg, rgba(0, 255, 100, 0.7), rgba(255, 255, 255, 0.7), rgba(0, 255, 100, 0.7));
+  background-size: 300% 100%;
+  animation: moveShine 2.5s linear infinite;
+}
+
+@keyframes moveShine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* === ICONS & TEXT === */
+.service i {
+  font-size: 2.5rem;
+  color: var(--green-700);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.service h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  position: relative;
+  z-index: 2;
+}
+
+.service p {
+  color: #555;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* === HOVER BUTTON === */
+.hover-btn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--green-700);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+}
+
+.service:hover .hover-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
